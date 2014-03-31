@@ -8,6 +8,6 @@
 ###How to set properties on Nodes ?
 [StateSet](http://www.bricoworks.com/articles/stateset/stateset.html) and [StateGraph](http://www.bricoworks.com/articles/stategraph/stategraph.html)
 ###Basic
-[Some Maths](http://trac.openscenegraph.org/projects/osg/wiki/Support/Maths) and an interactive introduction to [WebGL](http://www.webglacademy.com/) 
-###OpenSceneGraph FAQ
-[Generic](http://trac.openscenegraph.org/projects/osg//wiki/Support/FAQ)
+An interactive introduction to [WebGL](http://www.webglacademy.com/)
+###OpenSceneGraph Help
+[FAQ](http://www.openscenegraph.org/index.php/support/faq) and [Knowledge Base](www.openscenegraph.org/index.php/documentation/knowledge-base)
