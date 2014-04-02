@@ -1,5 +1,5 @@
 ---
-url: http://codepen.io/collection/Cbvlg/
+url: http://codepen.io/collection/CbvIg/
 ---
 
 ###Tutorials
