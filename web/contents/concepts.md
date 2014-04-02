@@ -10,4 +10,4 @@
 ###Basic
 An interactive introduction to [WebGL](http://www.webglacademy.com/)
 ###OpenSceneGraph Help
-[FAQ](http://www.openscenegraph.org/index.php/support/faq) and [Knowledge Base](www.openscenegraph.org/index.php/documentation/knowledge-base)
+[FAQ](http://www.openscenegraph.org/index.php/support/faq) and [Knowledge Base](http://www.openscenegraph.org/index.php/documentation/knowledge-base)
