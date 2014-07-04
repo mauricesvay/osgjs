@@ -123,11 +123,11 @@ define( [
         init: function ( gl ) {
             if ( !this._textureObject ) {
                 this._textureObject = Texture.textureManager.generateTextureObject( gl,
-                                                                                    this,
-                                                                                    this._textureTarget,
-                                                                                    this._internalFormat,
-                                                                                    this._textureWidth,
-                                                                                    this._textureHeight );
+                    this,
+                    this._textureTarget,
+                    this._internalFormat,
+                    this._textureWidth,
+                    this._textureHeight );
                 this.dirty();
             }
         },
@@ -204,10 +204,10 @@ define( [
 
             var image = img;
             if ( img instanceof window.Image ||
-                 img instanceof HTMLCanvasElement ||
-                 img instanceof Uint8Array ) {
-                     image = new Image( img );
-                 }
+                img instanceof HTMLCanvasElement ||
+                img instanceof Uint8Array ) {
+                image = new Image( img );
+            }
 
             this._image = image;
             this.setImageFormat( imageFormat );
@@ -236,9 +236,20 @@ define( [
         setUnrefImageDataAfterApply: function ( bool ) {
             this._unrefImageDataAfterApply = bool;
         },
-        setInternalFormat: function ( internalFormat ) {
-            this._internalFormat = internalFormat;
+
+        setInternalFormat: function ( formatSource ) {
+            var format = formatSource;
+            if ( format ) {
+                if ( typeof ( format ) === 'string' ) {
+                    format = Texture[ format ];
+                }
+            } else {
+                format = Texture.RGBA;
+            }
+
+            this._internalFormat = format;
         },
+
         getInternalFormat: function () {
             return this._internalFormat;
         },
@@ -251,9 +262,9 @@ define( [
                 this.setWrapS( Texture.CLAMP_TO_EDGE );
 
                 if ( this._minFilter === Texture.LINEAR_MIPMAP_LINEAR ||
-                     this._minFilter === Texture.LINEAR_MIPMAP_NEAREST ) {
-                         this.setMinFilter( Texture.LINEAR );
-                     }
+                    this._minFilter === Texture.LINEAR_MIPMAP_NEAREST ) {
+                    this.setMinFilter( Texture.LINEAR );
+                }
             }
 
             gl.texParameteri( target, gl.TEXTURE_MAG_FILTER, this._magFilter );
@@ -264,11 +275,11 @@ define( [
 
         generateMipmap: function ( gl, target ) {
             if ( this._minFilter === gl.NEAREST_MIPMAP_NEAREST ||
-                 this._minFilter === gl.LINEAR_MIPMAP_NEAREST ||
-                 this._minFilter === gl.NEAREST_MIPMAP_LINEAR ||
-                 this._minFilter === gl.LINEAR_MIPMAP_LINEAR ) {
-                     gl.generateMipmap( target );
-                 }
+                this._minFilter === gl.LINEAR_MIPMAP_NEAREST ||
+                this._minFilter === gl.NEAREST_MIPMAP_LINEAR ||
+                this._minFilter === gl.LINEAR_MIPMAP_LINEAR ) {
+                gl.generateMipmap( target );
+            }
         },
         applyTexImage2D: function ( gl ) {
             var args = Array.prototype.slice.call( arguments, 1 );
@@ -283,7 +294,7 @@ define( [
                 }
             }
         },
-        computeTextureFormat: function() {
+        computeTextureFormat: function () {
             if ( !this._internalFormat ) {
                 this._internalFormat = this._imageFormat || Texture.RGBA;
                 this._imageFormat = this._internalFormat;
@@ -323,23 +334,23 @@ define( [
 
                         if ( image.isTypedArray() ) {
                             this.applyTexImage2D( gl,
-                                                  this._textureTarget,
-                                                  0,
-                                                  this._internalFormat,
-                                                  this._textureWidth,
-                                                  this._textureHeight,
-                                                  0,
-                                                  this._internalFormat,
-                                                  this._type,
-                                                  this._image.getImage() );
+                                this._textureTarget,
+                                0,
+                                this._internalFormat,
+                                this._textureWidth,
+                                this._textureHeight,
+                                0,
+                                this._internalFormat,
+                                this._type,
+                                this._image.getImage() );
                         } else {
                             this.applyTexImage2D( gl,
-                                                  this._textureTarget,
-                                                  0,
-                                                  this._internalFormat,
-                                                  this._internalFormat,
-                                                  this._type,
-                                                  image.getImage() );
+                                this._textureTarget,
+                                0,
+                                this._internalFormat,
+                                this._internalFormat,
+                                this._type,
+                                image.getImage() );
                         }
 
                         this.applyFilterParameter( gl, this._textureTarget );
@@ -388,8 +399,8 @@ define( [
             injectionFunction,
             /**ShaderGenerator.Type*/
             mode ) {
-                this[ mode ] = injectionFunction;
-            },
+            this[ mode ] = injectionFunction;
+        },
 
         generateShader: function ( unit, type ) {
             if ( this[ type ] ) {
