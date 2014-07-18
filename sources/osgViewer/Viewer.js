@@ -19,9 +19,9 @@ define( [
 
     var OptionsDefault = {
         'antialias': true,
-        'useDevicePixelRatio': true,
         'fullscreen': true,
-        'enableFrustumCulling': false
+        'enableFrustumCulling': false,
+        'overrideDevicePixelRatio': undefined
     };
 
 
